@@ -1,9 +1,5 @@
 import { expect } from "vitest";
-
-import type { NestedObject } from "./shared.types";
-
-import { formDataToObject } from "./formDataToObject";
-import { objectToFormData } from "./objectToFormData";
+import { formDataToObject } from "./dist/formDataToObject";
 
 describe("FormData Conversion", () => {
   test("formDataToObject", () => {
@@ -21,7 +17,7 @@ describe("FormData Conversion", () => {
       },
     };
 
-    const result = formDataToObject({ formData });
+    const result = formDataToObject(formData);
 
     expect(result).toEqual(expected);
   });

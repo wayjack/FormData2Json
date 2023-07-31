@@ -1,12 +1,13 @@
 /** Accepts objects and arrays */
 export function objectToFormData(
-  formData = new FormData(),
+  object = new FormData(),
   options: ObjectToFormDataOptions
 ): FormData {
   const {
     arrayKeyPrefix = "",
     input,
     parentKey = "",
+    formData = new FormData(),
   } = options;
 
   if (Array.isArray(input)) {
@@ -15,10 +16,11 @@ export function objectToFormData(
         ? `${arrayKeyPrefix}[${index}]`
         : `${parentKey}[${index}]`;
       if (typeof value === "object") {
-        objectToFormData(formData, {
+        objectToFormData(object, {
           arrayKeyPrefix,
           input: value as NestedObject,
           parentKey: key,
+          formData
         });
       } else {
         formData.append(key, value as string);
@@ -28,10 +30,11 @@ export function objectToFormData(
     for (const [key, value] of Object.entries(input)) {
       const nestedKey = parentKey ? `${parentKey}.${key}` : key;
       if (typeof value === "object") {
-        objectToFormData(formData, {
+        objectToFormData(object, {
           arrayKeyPrefix,
           input: value as NestedObject,
           parentKey: nestedKey,
+          formData
         });
       } else {
         formData.append(nestedKey, value as string);

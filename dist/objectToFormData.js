@@ -2,18 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.objectToFormData = void 0;
 /** Accepts objects and arrays */
-function objectToFormData(formData = new FormData(), options) {
-    const { arrayKeyPrefix = "", input, parentKey = "", } = options;
+function objectToFormData(object = new FormData(), options) {
+    const { arrayKeyPrefix = "", input, parentKey = "", formData = new FormData(), } = options;
     if (Array.isArray(input)) {
         for (const [index, value] of input.entries()) {
             const key = arrayKeyPrefix
                 ? `${arrayKeyPrefix}[${index}]`
                 : `${parentKey}[${index}]`;
             if (typeof value === "object") {
-                objectToFormData(formData, {
+                objectToFormData(object, {
                     arrayKeyPrefix,
                     input: value,
                     parentKey: key,
+                    formData
                 });
             }
             else {
@@ -25,10 +26,11 @@ function objectToFormData(formData = new FormData(), options) {
         for (const [key, value] of Object.entries(input)) {
             const nestedKey = parentKey ? `${parentKey}.${key}` : key;
             if (typeof value === "object") {
-                objectToFormData(formData, {
+                objectToFormData(object, {
                     arrayKeyPrefix,
                     input: value,
                     parentKey: nestedKey,
+                    formData
                 });
             }
             else {

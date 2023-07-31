@@ -1,5 +1,5 @@
 declare type NestedObject = {
-  [key: string]: NestedObject | NestedObject[] | object | string;
+  [key: string]: NestedObject | NestedObject[] | (object | string | boolean | number | null);
 };
 
 declare type FormDataToObjectOptions = {
@@ -8,6 +8,7 @@ declare type FormDataToObjectOptions = {
 
 declare type ObjectToFormDataOptions = {
   arrayKeyPrefix?: string;
+  formData: FormData;
   input: NestedObject | NestedObject[];
   parentKey?: string;
 }

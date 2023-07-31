@@ -1,2 +1,2 @@
 /** Accepts objects and arrays */
-export declare function objectToFormData(formData: FormData | undefined, options: ObjectToFormDataOptions): FormData;
+export declare function objectToFormData(object: FormData | undefined, options: ObjectToFormDataOptions): FormData;
