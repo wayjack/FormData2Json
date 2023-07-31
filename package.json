@@ -1,0 +1,28 @@
+{
+  "name": "formdata2json",
+  "version": "1.0.0",
+  "description": "FormData -> JSON, JSON -> FormData, FormData -> Object, Object -> FormData Converter.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "vitest form-data-conversions"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturKot95/FormData2Json.git"
+  },
+  "keywords": [
+    "formdata",
+    "json",
+    "javascript"
+  ],
+  "author": "Artur Kot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ArturKot95/FormData2Json/issues"
+  },
+  "homepage": "https://github.com/ArturKot95/FormData2Json#readme",
+  "devDependencies": {
+    "vitest": "^0.33.0"
+  }
+}
