@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.formDataToObject = void 0;
 function formDataToObject(formData = new FormData(), options) {
     var _a, _b, _c;
-    const { parentKey = "" } = options;
+    const { parentKey } = options !== null && options !== void 0 ? options : { parentKey: "" };
     const result = {};
     const entries = formData.entries();
     for (const [key, value] of entries) {
