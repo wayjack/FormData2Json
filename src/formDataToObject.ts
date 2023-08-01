@@ -2,7 +2,7 @@ export function formDataToObject(
   formData = new FormData(),
   options: FormDataToObjectOptions
 ): NestedObject {
-  const { parentKey = "" } = options;
+  const { parentKey } = options ?? { parentKey: "" };
   const result: any = {};
   const entries = formData.entries();
 
