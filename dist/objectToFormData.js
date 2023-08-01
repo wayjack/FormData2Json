@@ -3,7 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.objectToFormData = void 0;
 /** Accepts objects and arrays */
 function objectToFormData(object = new FormData(), options) {
-    const { arrayKeyPrefix = "", input, parentKey = "", formData = new FormData(), } = options;
+    const { arrayKeyPrefix, input, parentKey, formData } = options !== null && options !== void 0 ? options : {
+        arrayKeyPrefix: "",
+        input: {},
+        parentKey: "",
+        formData: new FormData(),
+    };
     if (Array.isArray(input)) {
         for (const [index, value] of input.entries()) {
             const key = arrayKeyPrefix

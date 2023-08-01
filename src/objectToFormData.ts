@@ -4,11 +4,16 @@ export function objectToFormData(
   options: ObjectToFormDataOptions
 ): FormData {
   const {
-    arrayKeyPrefix = "",
+    arrayKeyPrefix,
     input,
-    parentKey = "",
-    formData = new FormData(),
-  } = options;
+    parentKey,
+    formData
+  } = options ?? {
+    arrayKeyPrefix: "",
+    input: {},
+    parentKey: "",
+    formData: new FormData(),
+  };
 
   if (Array.isArray(input)) {
     for (const [index, value] of input.entries()) {

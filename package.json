@@ -1,6 +1,6 @@
 {
   "name": "formdata2json",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "FormData -> JSON, JSON -> FormData, FormData -> Object, Object -> FormData Converter.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
