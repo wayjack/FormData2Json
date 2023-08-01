@@ -1,29 +1,26 @@
 /** Accepts objects and arrays */
 export function objectToFormData(
-  object = new FormData(),
+  object: NestedObject,
   options: ObjectToFormDataOptions
 ): FormData {
   const {
     arrayKeyPrefix,
-    input,
     parentKey,
     formData
   } = options ?? {
     arrayKeyPrefix: "",
-    input: {},
     parentKey: "",
     formData: new FormData(),
   };
 
-  if (Array.isArray(input)) {
-    for (const [index, value] of input.entries()) {
+  if (Array.isArray(object)) {
+    for (const [index, value] of object.entries()) {
       const key = arrayKeyPrefix
         ? `${arrayKeyPrefix}[${index}]`
         : `${parentKey}[${index}]`;
       if (typeof value === "object") {
-        objectToFormData(object, {
+        objectToFormData(value, {
           arrayKeyPrefix,
-          input: value as NestedObject,
           parentKey: key,
           formData
         });
@@ -32,12 +29,11 @@ export function objectToFormData(
       }
     }
   } else {
-    for (const [key, value] of Object.entries(input)) {
+    for (const [key, value] of Object.entries(object)) {
       const nestedKey = parentKey ? `${parentKey}.${key}` : key;
       if (typeof value === "object") {
-        objectToFormData(object, {
+        objectToFormData(value as NestedObject, {
           arrayKeyPrefix,
-          input: value as NestedObject,
           parentKey: nestedKey,
           formData
         });

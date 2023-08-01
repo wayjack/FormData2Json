@@ -9,6 +9,5 @@ declare type FormDataToObjectOptions = {
 declare type ObjectToFormDataOptions = {
   arrayKeyPrefix?: string;
   formData: FormData;
-  input: NestedObject | NestedObject[];
   parentKey?: string;
 }
