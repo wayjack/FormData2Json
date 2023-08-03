@@ -1,6 +1,8 @@
+import { FormDataToObjectOptions, NestedObject } from "./types";
+
 export function formDataToObject(
   formData = new FormData(),
-  options: FormDataToObjectOptions
+  options?: FormDataToObjectOptions
 ): NestedObject {
   const { parentKey } = options ?? { parentKey: "" };
   const result: any = {};

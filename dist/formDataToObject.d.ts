@@ -1,1 +1,2 @@
-export declare function formDataToObject(formData: FormData | undefined, options: FormDataToObjectOptions): NestedObject;
+import { FormDataToObjectOptions, NestedObject } from "./types";
+export declare function formDataToObject(formData?: FormData, options?: FormDataToObjectOptions): NestedObject;

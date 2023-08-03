@@ -1,7 +1,9 @@
+import { NestedObject, ObjectToFormDataOptions } from "./types";
+
 /** Accepts objects and arrays */
 export function objectToFormData(
   object: NestedObject,
-  options: ObjectToFormDataOptions
+  options?: ObjectToFormDataOptions
 ): FormData {
   const {
     arrayKeyPrefix,

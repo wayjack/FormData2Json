@@ -1,1 +1,2 @@
-export declare const jsonToFormData: (json: string, options: ObjectToFormDataOptions) => FormData;
+import { ObjectToFormDataOptions } from "./types";
+export declare const jsonToFormData: (json: string, options?: ObjectToFormDataOptions) => FormData;
