@@ -16,7 +16,7 @@ export function objectToFormData(
             const key = arrayKeyPrefix
                 ? `${arrayKeyPrefix}[${index}]`
                 : `${parentKey}[${index}]`;
-            if (typeof value === "undefined") {
+            if (typeof value === "undefined" || value === null) {
                 continue;
             } else if (typeof value === "object" && !(value instanceof File)) {
                 objectToFormData(value, {
@@ -31,7 +31,7 @@ export function objectToFormData(
     } else {
         for (const [key, value] of Object.entries(object)) {
             const nestedKey = parentKey ? `${parentKey}.${key}` : key;
-            if (typeof value === "undefined") {
+            if (typeof value === "undefined" || value === null) {
                 continue;
             } else if (typeof value === "object" && !(value instanceof File)) {
                 objectToFormData(value as NestedObject, {
