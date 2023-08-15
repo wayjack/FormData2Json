@@ -10,8 +10,13 @@ function objectToFormData(object, options) {
     };
     if (Array.isArray(object)) {
         for (const [index, value] of object.entries()) {
-            const key = arrayKeyPrefix ? `${arrayKeyPrefix}[${index}]` : `${parentKey}[${index}]`;
-            if (typeof value === "object" && !(value instanceof File)) {
+            const key = arrayKeyPrefix
+                ? `${arrayKeyPrefix}[${index}]`
+                : `${parentKey}[${index}]`;
+            if (typeof value === "undefined") {
+                continue;
+            }
+            else if (typeof value === "object" && !(value instanceof File)) {
                 objectToFormData(value, {
                     arrayKeyPrefix,
                     parentKey: key,
@@ -26,7 +31,10 @@ function objectToFormData(object, options) {
     else {
         for (const [key, value] of Object.entries(object)) {
             const nestedKey = parentKey ? `${parentKey}.${key}` : key;
-            if (typeof value === "object" && !(value instanceof File)) {
+            if (typeof value === "undefined") {
+                continue;
+            }
+            else if (typeof value === "object" && !(value instanceof File)) {
                 objectToFormData(value, {
                     arrayKeyPrefix,
                     parentKey: nestedKey,
